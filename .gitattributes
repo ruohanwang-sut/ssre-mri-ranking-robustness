@@ -1,0 +1,4 @@
+* text=auto eol=lf
+archive/* -text
+*.npz -text
+*.png -text
