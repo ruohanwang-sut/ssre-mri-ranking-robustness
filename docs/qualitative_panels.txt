@@ -1,0 +1,34 @@
+Raw per-panel images for the real-case SSRE demonstration (case 209_2090204,
+slice 8 = 0-based 7, condition C1, R = 4). All arrays are exported directly
+from q2_ssre_001_qualitative_reexport_001.npz / the frozen pipeline -- no
+panel is cropped from a screenshot or figure.
+
+Scaling conventions
+-------------------
+* ref_C1_slice8.*            320x320 fully sampled reference (reconstruction_rss crop).
+* recon_C1_rho{0.25,1.00}_{VN,PMR,PMRP}.*
+                             Six true reconstructions. PNG: 8-bit with the ONE
+                             shared gray window [0, 0.000442] set by the
+                             reference (no per-image normalization). TIF:
+                             raw float32, unscaled.
+* err_C1_rho{...}_{...}.*    True absolute error |recon - reference| / max(ref).
+                             PNG: Blues colormap, ONE shared scale
+                             [0, 0.129701] across all six. TIF: raw float32
+                             error values.
+* sensmaps_C1_slice8_rho{...}_coil{01..14}.tif
+                             Per-coil sensitivity magnitude (768x396 float32)
+                             from the official VarNet sensitivity network --
+                             the exact stage the L intervention enters. One
+                             file per coil; the two rho share the implicit
+                             scale (max 0.951 across both).
+* sensmaps_C1_slice8_rho{...}.png
+                             14-coil contact sheets (shared scale [0, 0.951]).
+Note: an RSS-across-coils image is intentionally NOT provided -- the official
+sensitivity normalization makes sum_i |s_i|^2 identically 1, so RSS carries no
+spatial information.
+
+Provenance: REGENERATED from the frozen configuration with bit-identical
+checkpoints (SHA-256 verified); all 24 frozen volume metrics of this case
+reproduced with zero deviation (max |dPSNR| = 0.0 dB, |dNMSE| = 0, |dSSIM| = 0).
+Byte-identity to the lost original export is not claimed. Single-case images
+do not support population-level or clinical conclusions.

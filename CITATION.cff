@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "Please cite the exact repository version used; an article DOI is not yet available."
+title: "SSRE MRI ranking robustness supporting code and data"
+type: software
+authors:
+  - family-names: Wang
+    given-names: Ruohan
+    affiliation: Shenyang University of Technology
+    orcid: https://orcid.org/0009-0006-6069-9177
+repository-code: https://github.com/ruohanwang-sut/ssre-mri-ranking-robustness
+date-released: 2026-10-10

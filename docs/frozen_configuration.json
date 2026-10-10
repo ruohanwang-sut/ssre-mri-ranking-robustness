@@ -1,0 +1,62 @@
+{
+  "environment": {
+    "python": "3.10.19",
+    "torch": "2.7.1+cu118",
+    "numpy": "2.2.6",
+    "lightning": "2.6.1",
+    "gpu_name": "NVIDIA GeForce RTX 4080 Laptop GPU",
+    "seed": 20260901,
+    "precision": "fp32; torch.inference_mode(); no autocast/quantization; torch.backends.cudnn.benchmark=False"
+  },
+  "conditions": {
+    "C1": {
+      "mask": "official EquispacedMaskFunc(center_fraction=0.08, acceleration=4)",
+      "use_seed": true,
+      "seed": "tuple(map(ord, filename))",
+      "padding": "official metadata",
+      "L_nom": 32,
+      "rho_to_L": {
+        "0.25": 8,
+        "0.5": 16,
+        "0.75": 24,
+        "1.0": 32
+      },
+      "observed_sampled_cols_offsetNone": "all 68 filenames -> 123"
+    },
+    "C2": {
+      "mask": "official EquispacedMaskFunc(center_fraction=0.04, acceleration=8)",
+      "use_seed": true,
+      "seed": "tuple(map(ord, filename))",
+      "padding": "official metadata",
+      "L_nom": 16,
+      "rho_to_L": {
+        "0.25": 4,
+        "0.5": 8,
+        "0.75": 12,
+        "1.0": 16
+      },
+      "observed_sampled_cols_offsetNone": {
+        "63": 32,
+        "64": 36
+      }
+    }
+  },
+  "bootstrap": {
+    "B": 10000,
+    "seed": 20260901,
+    "se_floor": 1e-12,
+    "ddof": 1,
+    "quantile": "numpy.percentile(T,95), default linear interpolation",
+    "scope": "four tested support fractions within each curve; no joint six-curve adjustment"
+  },
+  "checkpoints": {
+    "varnet_ckpt_sha256": "2cdfdde2fe662f8995316a7ba981d8d3f405d2a5fd82a61bfa1bc4e56062262f",
+    "pmr_ckpt_sha256": "67a30557acdab3c19f118ea3d0cd63cc51a32b92326f09fd37ca89156369954e",
+    "pmrp_ckpt_sha256": "42722018604944c567c598ddf5c488d135793ef337359a1da03ad3d4301e177e",
+    "promptmr_official_commit": "934eeda6d4d18cd39e406fa1eee9e1f70603cb5e",
+    "fastmri_official_commit": "91f2df4711adbb6d643df1810f234e4abcf5881b",
+    "inherited_pipeline_script_sha256": "c981833d8e7ec572986936ad7ecc15d7d5e201cb3812d1bd1259181db2637dc8",
+    "inherited_pipeline_script2_sha256": "09345a41fbcac5371c1c384d336b2e8173d80df08aefc194e6a1fd31ea352bd7"
+  },
+  "frozen_script_sha256": "f6ee1fbc3ab0575daa21f7e79d32267420ca8d7028d97673de5342ae97de8057"
+}
